@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8">
+    <title>Validar formularios</title>
+    <link href="style.css" rel="stylesheet">
+</head>
+
+<body>
+
+    <main role="main" class="container">
+        <div class="row">
+
+            <div class="col-12">
+                <form action="procesar.html" id="formulario">
+                    <div class="form-group">
+                        <input name="nombre" required id="nombre" type="text" class="impuu1" placeholder="Nombre">
+                    </div>
+                    <div class="form-group">
+                        <input name="correo" required id="correo" type="text" class="impuu1"
+                            placeholder="Correo">
+                    </div>
+                    <button class="boton">Enviar</button>
+                </form>
+            </div>
+        </div>
+    </main>
+    <script>
+
+        // la validación es muy pobre pero almenos valida lo que toca, el email, no es type email asi que all good
+        // Obtener referencias 
+        const $formulario = document.querySelector("#formulario"),
+            $nombre = document.querySelector("#nombre"),
+            $correo = document.querySelector("#correo");
+        $formulario.onsubmit = evento => {
+            evento.preventDefault();
+            const nombre = $nombre.value,
+                correo = $correo.value;
+            // Validar
+            if (nombre === "Carlos" || nombre === "Luis" || nombre === "Jose" || nombre === "Pedro") {
+                alert("No pueden ser esos nombres");
+                return;
+            }
+            if (correo.endsWith("@hotmail.com")) {
+                alert("No puede ser de hotmail");
+                return;
+            }
+            $formulario.submit();
+        };
+    </script>
+
+</body>
+
+</html>
